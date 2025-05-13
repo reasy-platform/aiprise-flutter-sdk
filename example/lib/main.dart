@@ -23,7 +23,7 @@ class MaterialExample extends StatelessWidget {
         body: const Center(
           child: AiPriseMaterialButton(
             mode: AiPriseEnvironment.sandbox,
-            templateID: "example-template",
+            templateID: "TEMPLATE_ID_HERE",
           ),
         ),
       ),
