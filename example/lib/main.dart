@@ -10,22 +10,24 @@ class MaterialExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          useMaterial3: true,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        useMaterial3: true,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Material Example'),
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
         ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Material Example'),
-            backgroundColor: Colors.blue,
-            foregroundColor: Colors.white,
+        body: const Center(
+          child: AiPriseMaterialButton(
+            mode: AiPriseEnvironment.sandbox,
+            templateID: "example-template",
           ),
-          body: const Center(
-            child: AiPriseMaterialButton(
-                mode: AiPriseEnvironment.sandbox,
-                templateID: "example-template"),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -38,13 +40,16 @@ class CupertinoExample extends StatelessWidget {
     return const CupertinoApp(
       theme: CupertinoThemeData(primaryColor: CupertinoColors.activeBlue),
       home: CupertinoPageScaffold(
-          navigationBar: CupertinoNavigationBar(
-            middle: Text('Cupertino Example'),
+        navigationBar: CupertinoNavigationBar(
+          middle: Text('Cupertino Example'),
+        ),
+        child: Center(
+          child: AiPriseCupertinoButton(
+            mode: AiPriseEnvironment.sandbox,
+            templateID: "TEMPLATE_ID_HERE",
           ),
-          child: Center(
-              child: AiPriseCupertinoButton(
-                  mode: AiPriseEnvironment.sandbox,
-                  templateID: "TEMPLATE_ID_HERE"))),
+        ),
+      ),
     );
   }
 }
@@ -88,9 +93,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     if (!_isCameraPermissionGranted) {
       return MaterialApp(
         home: Scaffold(
-          body: Center(
-            child: Text("Camera permission not granted yet!"),
-          ),
+          body: Center(child: Text("Camera permission not granted yet!")),
         ),
       );
     }
@@ -101,18 +104,12 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           title: const Text('AiPrise SDK Examples'),
           bottom: TabBar(
             controller: _tabController,
-            tabs: const [
-              Tab(text: 'Material'),
-              Tab(text: 'Cupertino'),
-            ],
+            tabs: const [Tab(text: 'Material'), Tab(text: 'Cupertino')],
           ),
         ),
         body: TabBarView(
           controller: _tabController,
-          children: const [
-            MaterialExample(),
-            CupertinoExample(),
-          ],
+          children: const [MaterialExample(), CupertinoExample()],
         ),
       ),
     );
