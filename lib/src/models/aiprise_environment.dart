@@ -1,0 +1,4 @@
+enum AiPriseEnvironment {
+  sandbox,
+  production,
+}
