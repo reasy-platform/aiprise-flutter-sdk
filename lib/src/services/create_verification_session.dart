@@ -19,6 +19,7 @@ Future<AiPriseSessionInfo> createVerificationSession(
     String? eventsCallbackURL,
     String? clientReferenceID,
     Map? clientReferenceData,
+    String? userProfileID,
     AiPriseUserData? userData,
     List<AiPriseAdditionalInfo>? additionalInfo,
     AiPriseUiOptions? uiOptions,
@@ -40,6 +41,7 @@ Future<AiPriseSessionInfo> createVerificationSession(
       if (clientReferenceID != null) 'client_reference_id': clientReferenceID,
       if (clientReferenceData != null)
         'client_reference_data': clientReferenceData,
+      if (userProfileID != null) 'user_profile_id': userProfileID,
       if (userData != null) 'user_data': userData.toJson(),
       if (additionalInfo != null)
         'additional_info': additionalInfo.map((e) => e.toJson()).toList(),

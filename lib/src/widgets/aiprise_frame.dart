@@ -31,6 +31,7 @@ class AiPriseFrame extends StatefulWidget {
   final String? eventsCallbackURL;
   final String? clientReferenceID;
   final Map? clientReferenceData;
+  final String? userProfileID;
   final AiPriseUserData? userData;
   final List<AiPriseAdditionalInfo>? additionalInfo;
   final AiPriseUiOptions? uiOptions;
@@ -55,6 +56,7 @@ class AiPriseFrame extends StatefulWidget {
     this.eventsCallbackURL,
     this.clientReferenceID,
     this.clientReferenceData,
+    this.userProfileID,
     this.userData,
     this.additionalInfo,
     this.uiOptions,
@@ -96,6 +98,7 @@ class _AiPriseFrameState extends State<AiPriseFrame> {
             widget.eventsCallbackURL,
             widget.clientReferenceID,
             widget.clientReferenceData,
+            widget.userProfileID,
             widget.userData,
             widget.additionalInfo,
             widget.uiOptions,
@@ -169,6 +172,16 @@ class _AiPriseFrameState extends State<AiPriseFrame> {
             setState(() {
               _isWebViewPageLoaded = true;
             });
+          },
+          onWebResourceError: (error) {
+            if (!mounted) return;
+            // Update the state
+            setState(() {
+              _sessionStatus = "error";
+              _sessionError = "Unable to start session.\nPlease try again.";
+            });
+            // Inform the parent
+            widget.onError?.call("SESSION_FAILED");
           },
         ),
       )

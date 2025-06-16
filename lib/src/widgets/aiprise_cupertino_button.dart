@@ -23,6 +23,7 @@ class AiPriseCupertinoButton extends StatefulWidget {
   final String? eventsCallbackURL;
   final String? clientReferenceID;
   final Map? clientReferenceData;
+  final String? userProfileID;
   final AiPriseUserData? userData;
   final List<AiPriseAdditionalInfo>? additionalInfo;
   final AiPriseUiOptions? uiOptions;
@@ -60,6 +61,7 @@ class AiPriseCupertinoButton extends StatefulWidget {
     this.eventsCallbackURL,
     this.clientReferenceID,
     this.clientReferenceData,
+    this.userProfileID,
     this.userData,
     this.additionalInfo,
     this.uiOptions,
@@ -190,6 +192,7 @@ class _AiPriseCupertinoButtonState extends State<AiPriseCupertinoButton> {
     overlayEntry = OverlayEntry(
       builder: (BuildContext context) {
         return CupertinoPageScaffold(
+          resizeToAvoidBottomInset: false,
           navigationBar: CupertinoNavigationBar(
             backgroundColor: darkThemeEnabled
                 ? CupertinoColors.black
@@ -208,28 +211,31 @@ class _AiPriseCupertinoButtonState extends State<AiPriseCupertinoButton> {
                       : CupertinoColors.black),
             ),
           ),
-          child: AiPriseFrame(
-            // Session Payload
-            mode: widget.mode,
-            templateID: widget.templateID,
-            sessionID: widget.sessionID,
-            callbackURL: widget.callbackURL,
-            eventsCallbackURL: widget.eventsCallbackURL,
-            clientReferenceID: widget.clientReferenceID,
-            clientReferenceData: widget.clientReferenceData,
-            userData: widget.userData,
-            additionalInfo: widget.additionalInfo,
-            uiOptions: widget.uiOptions,
-            verificationOptions: widget.verificationOptions,
-            theme: widget.theme,
-            // Callbacks
-            onError: handleSessionError,
-            onStart: handleSessionStart,
-            onResume: handleSessionResume,
-            onBusinessProfileCreated: handleBusinessProfileCreated,
-            onSuccess: handleSessionSuccess,
-            onComplete: handleSessionComplete,
-          ),
+          child: SafeArea(
+              maintainBottomViewPadding: true,
+              child: AiPriseFrame(
+                // Session Payload
+                mode: widget.mode,
+                templateID: widget.templateID,
+                sessionID: widget.sessionID,
+                callbackURL: widget.callbackURL,
+                eventsCallbackURL: widget.eventsCallbackURL,
+                clientReferenceID: widget.clientReferenceID,
+                clientReferenceData: widget.clientReferenceData,
+                userProfileID: widget.userProfileID,
+                userData: widget.userData,
+                additionalInfo: widget.additionalInfo,
+                uiOptions: widget.uiOptions,
+                verificationOptions: widget.verificationOptions,
+                theme: widget.theme,
+                // Callbacks
+                onError: handleSessionError,
+                onStart: handleSessionStart,
+                onResume: handleSessionResume,
+                onBusinessProfileCreated: handleBusinessProfileCreated,
+                onSuccess: handleSessionSuccess,
+                onComplete: handleSessionComplete,
+              )),
         );
       },
     );
