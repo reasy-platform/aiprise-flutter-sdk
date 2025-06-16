@@ -1,15 +1,16 @@
 // ignore_for_file: non_constant_identifier_names
 
 class AiPriseThemeOptions {
-  // Brand Color
+  // Branding
+  String? logo_url;
+  String? font_name; // Name of Google Font
+  String? font_weights; // Comma separated list of font weights
+
+  // Colors
   String? background;
   String? color_page; // For the background of the card on desktop
   String? color_brand;
   String? color_brand_overlay; // For the text / icons over the brand color
-
-  // Font
-  String? font_name; // Name of Google Font
-  String? font_weights; // Comma separated list of font weights
 
   // Button
   String? button_border_radius;
@@ -34,15 +35,16 @@ class AiPriseThemeOptions {
 
   // Constructor
   AiPriseThemeOptions({
-    // Brand Color
+    // Branding
+    this.logo_url,
+    this.font_name,
+    this.font_weights,
+
+    // Colors
     this.background,
     this.color_page,
     this.color_brand,
     this.color_brand_overlay,
-
-    // Font
-    this.font_name,
-    this.font_weights,
 
     // Button
     this.button_border_radius,
@@ -66,16 +68,17 @@ class AiPriseThemeOptions {
 
   // Convert to JSON
   Map<String, String?> toJson() => {
-        // Brand Color
+        // Branding
+        if (logo_url != null) 'logo_url': logo_url,
+        if (font_name != null) 'font_name': font_name,
+        if (font_weights != null) 'font_weights': font_weights,
+
+        // Colors
         if (background != null) 'background': background,
         if (color_page != null) 'color_page': color_page,
         if (color_brand != null) 'color_brand': color_brand,
         if (color_brand_overlay != null)
           'color_brand_overlay': color_brand_overlay,
-
-        // Font
-        if (font_name != null) 'font_name': font_name,
-        if (font_weights != null) 'font_weights': font_weights,
 
         // Button
         if (button_border_radius != null)
