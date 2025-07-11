@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         .package(name: "file_picker", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/file_picker-8.3.7/ios/file_picker"),
         .package(name: "image_picker_ios", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.12+2/ios/image_picker_ios"),
-        .package(name: "webview_flutter_wkwebview", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.20.0/darwin/webview_flutter_wkwebview")
+        .package(name: "webview_flutter_wkwebview", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.0/darwin/webview_flutter_wkwebview")
     ],
     targets: [
         .target(
