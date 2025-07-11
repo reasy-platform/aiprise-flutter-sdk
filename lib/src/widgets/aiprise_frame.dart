@@ -166,24 +166,12 @@ class _AiPriseFrameState extends State<AiPriseFrame> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       // To keep track of the webview page's loading state
       ..setNavigationDelegate(
-        NavigationDelegate(
-          onPageFinished: (String url) {
-            if (!mounted) return;
-            setState(() {
-              _isWebViewPageLoaded = true;
-            });
-          },
-          onWebResourceError: (error) {
-            if (!mounted) return;
-            // Update the state
-            setState(() {
-              _sessionStatus = "error";
-              _sessionError = "Unable to start session.\nPlease try again.";
-            });
-            // Inform the parent
-            widget.onError?.call("SESSION_FAILED");
-          },
-        ),
+        NavigationDelegate(onPageFinished: (String url) {
+          if (!mounted) return;
+          setState(() {
+            _isWebViewPageLoaded = true;
+          });
+        }),
       )
       // To listen to postMessage from the client screen
       ..addJavaScriptChannel(
