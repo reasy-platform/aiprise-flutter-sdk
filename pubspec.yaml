@@ -14,9 +14,7 @@ dependencies:
   http: ">=0.13.4"
   image_picker: ^1.0.4
   overlay_dialog: ^0.2.2
-  webview_flutter: ^4.2.4
-  webview_flutter_android: ^3.9.5
-  webview_flutter_wkwebview: ^3.7.4
+  webview_flutter: ^4.13.0
 
 dev_dependencies:
   flutter_test:
