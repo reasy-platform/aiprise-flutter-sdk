@@ -9,23 +9,23 @@ import PackageDescription
 let package = Package(
     name: "FlutterGeneratedPluginSwiftPackage",
     platforms: [
-        .iOS("12.0")
+        .iOS("13.0")
     ],
     products: [
         .library(name: "FlutterGeneratedPluginSwiftPackage", type: .static, targets: ["FlutterGeneratedPluginSwiftPackage"])
     ],
     dependencies: [
-        .package(name: "file_picker", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/file_picker-8.3.7/ios/file_picker"),
-        .package(name: "image_picker_ios", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.12+2/ios/image_picker_ios"),
-        .package(name: "webview_flutter_wkwebview", path: "/Users/sosualfred/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.0/darwin/webview_flutter_wkwebview")
+        .package(name: "webview_flutter_wkwebview", path: "../.packages/webview_flutter_wkwebview"),
+        .package(name: "image_picker_ios", path: "../.packages/image_picker_ios"),
+        .package(name: "file_picker", path: "../.packages/file_picker")
     ],
     targets: [
         .target(
             name: "FlutterGeneratedPluginSwiftPackage",
             dependencies: [
-                .product(name: "file-picker", package: "file_picker"),
+                .product(name: "webview-flutter-wkwebview", package: "webview_flutter_wkwebview"),
                 .product(name: "image-picker-ios", package: "image_picker_ios"),
-                .product(name: "webview-flutter-wkwebview", package: "webview_flutter_wkwebview")
+                .product(name: "file-picker", package: "file_picker")
             ]
         )
     ]
